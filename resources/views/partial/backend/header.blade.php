@@ -10,6 +10,19 @@
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
+        @if (session()->get('locale') == 'ar')
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('change_locale', 'en') }}">
+                    <img src="{{ asset('backend/img/us.png') }}" alt="EN" /> English
+                </a>
+            </li>
+        @else
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('change_locale', 'ar') }}">
+                    <img src="{{ asset('backend/img/sa.png') }}" alt="AR" /> عربي
+                </a>
+            </li>
+        @endif
 
         @if(auth()->user()->ability('admin', 'manage_supervisors,show_supervisors'))
         <li class="nav-item">
