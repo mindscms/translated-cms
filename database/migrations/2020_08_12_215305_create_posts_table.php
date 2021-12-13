@@ -18,11 +18,12 @@ class CreatePostsTable extends Migration
             $table->string('title')->index();
             $table->string('slug')->unique();
             $table->longText('description')->index();
+            $table->string('title_en')->index();
+            $table->string('slug_en')->unique();
+            $table->longText('description_en')->index();
             $table->unsignedTinyInteger('status')->default(0);
             $table->string('post_type')->default('post');
-
             $table->unsignedTinyInteger('comment_able')->default(1);
-
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
