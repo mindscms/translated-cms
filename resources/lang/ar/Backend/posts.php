@@ -10,8 +10,12 @@ return [
     'status'                => 'الحالة',
     'active'                => 'نشط',
     'inactive'              => 'غير نشط',
+    'yes'                   => 'نعم',
+    'no'                    => 'لا',
     'title'                 => 'العنوان',
+    'title_en'              => 'العنوان (English)',
     'description'           => 'الوصف',
+    'description_en'        => 'الوصف (English)',
     'tags'                  => 'العلامات',
     'select_all'            => 'اختر الكل',
     'deselect_all'          => 'الغاء تحديد الكل',
@@ -32,5 +36,8 @@ return [
     'ascending'             => 'تصاعدي',
     'descending'            => 'تنازلي',
     'search'                => 'بحث',
+
+    'no_comments_found'     => 'لا توجد تعليقات',
+    'disallow'              => 'التعليقات مغلقة',
 
 ];

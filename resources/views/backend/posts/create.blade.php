@@ -17,24 +17,39 @@
             </div>
         </div>
         <div class="card-body">
+            <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
 
-            {!! Form::open(['route' => 'admin.posts.store', 'method' => 'post', 'files' => true]) !!}
             <div class="row">
-                <div class="col-12">
+                <div class="col-6">
                     <div class="form-group">
-                        {!! Form::label('title', __('Backend/posts.title')) !!}
-                        {!! Form::text('title', old('title'), ['class' => 'form-control']) !!}
+                        <label for="title">{{ __('Backend/posts.title') }}</label>
+                        <input type="text" name="title" value="{{ old('title') }}" class="form-control">
                         @error('title')<span class="text-danger">{{ $message }}</span>@enderror
                     </div>
                 </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="title_en">{{ __('Backend/posts.title_en') }}</label>
+                        <input type="text" name="title_en" value="{{ old('title_en') }}" class="form-control">
+                        @error('title_en')<span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                </div>
             </div>
 
             <div class="row">
-                <div class="col-12">
+                <div class="col-6">
                     <div class="form-group">
-                        {!! Form::label('description', __('Backend/posts.description')) !!}
-                        {!! Form::textarea('description', old('description'), ['class' => 'form-control summernote']) !!}
+                        <label for="description">{{ __('Backend/posts.description') }}</label>
+                        <textarea name="description" class="form-control summernote">{!! old('description') !!}</textarea>
                         @error('description')<span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="description_en">{{ __('Backend/posts.description_en') }}</label>
+                        <textarea name="description_en" class="form-control summernote">{!! old('description_en') !!}</textarea>
+                        @error('description_en')<span class="text-danger">{{ $message }}</span>@enderror
                     </div>
                 </div>
             </div>
@@ -43,10 +58,15 @@
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
-                        {!! Form::label('tags', __('Backend/posts.tags')) !!}
+                        <label for="tags">{{ __('Backend/posts.tags') }}</label>
                         <button type="button" class="btn btn-primary btn-xs" id="select_btn_tag">{{ __('Backend/posts.select_all') }}</button>
                         <button type="button" class="btn btn-primary btn-xs" id="deselect_btn_tag">{{ __('Backend/posts.deselect_all') }}</button>
-                        {!! Form::select('tags[]', $tags->toArray() ,old('tags'), ['class' => 'form-control selects', 'multiple' => 'multiple' , 'id' => 'select_all_tags']) !!}
+                        <select name="tags[]" multiple class="form-control selects" id="select_all_tags">
+                            <option value=""> --- </option>
+                            @foreach($tags as $tag)
+                                <option value="{{ $tag->id }}" {{ in_array($tag->id, old('tags')) ? 'selected' : '' }}>{{ $tag->name() }}</option>
+                            @endforeach
+                        </select>
                         @error('tags')<span class="text-danger">{{ $message }}</span>@enderror
                     </div>
                 </div>
@@ -54,28 +74,39 @@
 
             <div class="row">
                 <div class="col-4">
-                    {!! Form::label('category_id', __('Backend/posts.category')) !!}
-                    {!! Form::select('category_id', ['' => '---'] + $categories->toArray(), old('category_id'), ['class' => 'form-control']) !!}
+                    <label for="category_id">{{ __('Backend/posts.category') }}</label>
+                    <select name="category_id" class="form-control">
+                        <option value=""> --- </option>
+                        @foreach($categories as $cat)
+                            <option value="{{ $cat->id }}" {{ old('category_id') == $cat->id ? 'selected' : '' }}>{{ $cat->name() }}</option>
+                        @endforeach
+                    </select>
                     @error('category_id')<span class="text-danger">{{ $message }}</span>@enderror
                 </div>
                 <div class="col-4">
-                    {!! Form::label('comment_able', __('Backend/posts.comment_able')) !!}
-                    {!! Form::select('comment_able', ['1' => 'Yes', '0' => 'No'], old('comment_able'), ['class' => 'form-control']) !!}
+                    <label for="comment_able">{{ __('Backend/posts.comment_able') }}</label>
+                    <select name="comment_able" class="form-control">
+                        <option value="1" {{ old('comment_able') == '1' ? 'selected' : '' }}>{{ __('Backend/posts.yes') }}</option>
+                        <option value="0" {{ old('comment_able') == '0' ? 'selected' : '' }}>{{ __('Backend/posts.no') }}</option>
+                    </select>
                     @error('comment_able')<span class="text-danger">{{ $message }}</span>@enderror
                 </div>
                 <div class="col-4">
-                    {!! Form::label('status', __('Backend/posts.status')) !!}
-                    {!! Form::select('status', ['1' => __('Backend/posts.active'), '0' => __('Backend/posts.inactive')], old('status'), ['class' => 'form-control']) !!}
+                    <label for="status">{{ __('Backend/posts.status') }}</label>
+                    <select name="status" class="form-control">
+                        <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>{{ __('Backend/posts.active') }}</option>
+                        <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>{{ __('Backend/posts.inactive') }}</option>
+                    </select>
                     @error('status')<span class="text-danger">{{ $message }}</span>@enderror
                 </div>
             </div>
 
             <div class="row pt-4">
                 <div class="col-12">
-                    {!! Form::label('images', __('Backend/posts.sliders')) !!}
+                    <label for="images">{{ __('Backend/posts.sliders') }}</label>
                     <br>
                     <div class="file-loading">
-                        {!! Form::file('images[]', ['id' => 'post-images', 'class' => 'file-input-overview', 'multiple' => 'multiple']) !!}
+                        <input type="file" name="images[]" id="post-images" class="file-input-overview" multiple="multiple">
                         <span class="form-text text-muted">{{ __('Backend/posts.image_hint') }}</span>
                         @error('images')<span class="text-danger">{{ $message }}</span>@enderror
                     </div>
@@ -83,9 +114,11 @@
             </div>
 
             <div class="form-group pt-4">
-                {!! Form::submit(__('Backend/posts.submit'), ['class' => 'btn btn-primary']) !!}
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Backend/posts.submit') }}
+                </button>
             </div>
-            {!! Form::close() !!}
+            </form>
         </div>
     </div>
 

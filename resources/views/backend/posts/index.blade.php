@@ -32,10 +32,14 @@
                 <tbody>
                 @forelse($posts as $post)
                     <tr>
-                        <td><a href="{{ route('admin.posts.show', $post->id) }}">{{ $post->title }}</a></td>
+                        <td>
+                            <a href="{{ route('admin.posts.show', $post->id) }}">
+                                {{ $post->title() }}
+                            </a>
+                        </td>
                         <td>{!! $post->comment_able == 1 ? "<a href=\"" . route('admin.post_comments.index', ['post_id' => $post->id]) . "\">" . $post->comments->count() . "</a>" : 'Disallow' !!}</td>
                         <td>{{ $post->status() }}</td>
-                        <td><a href="{{ route('admin.posts.index', ['category_id' => $post->category_id]) }}">{{ $post->category->name }}</a></td>
+                        <td><a href="{{ route('admin.posts.index', ['category_id' => $post->category_id]) }}">{{ $post->category->name() }}</a></td>
                         <td>{{ $post->user->name }}</td>
                         <td>{{ $post->created_at->format('d-m-Y h:i a') }}</td>
                         <td>
@@ -59,7 +63,7 @@
                 <tr>
                     <th colspan="7">
                         <div class="float-right">
-                            {!! $posts->appends(request()->input())->links() !!}
+                            {!! $posts->links() !!}
                         </div>
                     </th>
                 </tr>
@@ -67,6 +71,5 @@
             </table>
         </div>
     </div>
-
 
 @endsection

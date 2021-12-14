@@ -75,7 +75,7 @@ class Post extends Model
 
     public function status()
     {
-        return $this->status == 1 ? 'Active' : 'Inactive';
+        return $this->status == 1 ? __('Backend/posts.active') : __('Backend/posts.inactive');
     }
 
     public function title()
