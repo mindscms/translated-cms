@@ -13,7 +13,6 @@ return [
     'active_posts'          => 'Active posts',
     'inactive_posts'        => 'Inactive posts',
     'active_comments'       => 'Active comments',
-
     'last_posts'            => 'Last posts',
     'title'                 => 'Title',
     'comments'              => 'Comments',
@@ -24,5 +23,9 @@ return [
     'name'                  => 'Name',
     'comment'               => 'Comment',
     'no_comments_found'     => 'No comments found',
+    'supervisors'           => 'Supervisors',
+    'settings'              => 'Settings',
+    'profile'               => 'Profile',
+    'logout'                => 'Logout',
 
 ];

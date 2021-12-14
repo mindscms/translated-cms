@@ -8,17 +8,17 @@
         </div>
         <div class="col-2">
             <div class="form-group">
-                {!! Form::select('status', ['' => '---', '1' => 'Active', '0' => 'Inactive'], old('status', request()->input('status')), ['class' => 'form-control']) !!}
+                {!! Form::select('status', ['' => '---', '1' => __('Backend/supervisors.active'), '0' => __('Backend/supervisors.inactive')], old('status', request()->input('status')), ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="col-2">
             <div class="form-group">
-                {!! Form::select('sort_by', ['' => '---', 'id' => 'ID', 'name' => 'Name', 'created_at' => 'Created at'], old('sort_by', request()->input('sort_by')), ['class' => 'form-control']) !!}
+                {!! Form::select('sort_by', ['' => '---', 'id' => __('Backend/supervisors.id'), 'name' => __('Backend/supervisors.name'), 'created_at' => __('Backend/supervisors.created_at')], old('sort_by', request()->input('sort_by')), ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="col-2">
             <div class="form-group">
-                {!! Form::select('order_by', ['' => '---', 'asc' => 'Ascending', 'desc' => 'Descending'], old('order_by', request()->input('order_by')), ['class' => 'form-control']) !!}
+                {!! Form::select('order_by', ['' => '---', 'asc' => __('Backend/supervisors.ascending'), 'desc' => __('Backend/supervisors.descending')], old('order_by', request()->input('order_by')), ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="col-1">
@@ -29,7 +29,7 @@
         <div class="col-2"></div>
         <div class="col-1">
             <div class="form-group">
-                {!! Form::button('Search', ['class' => 'btn btn-link', 'type' => 'submit']) !!}
+                {!! Form::button(__('Backend/supervisors.search'), ['class' => 'btn btn-link', 'type' => 'submit']) !!}
             </div>
         </div>
     </div>

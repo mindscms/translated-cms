@@ -3,13 +3,13 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex">
-            <h6 class="m-0 font-weight-bold text-primary">Pages</h6>
+            <h6 class="m-0 font-weight-bold text-primary">{{ __('Backend/pages.pages') }}</h6>
             <div class="ml-auto">
                 <a href="{{ route('admin.pages.create') }}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-plus"></i>
                     </span>
-                    <span class="text">Add new page</span>
+                    <span class="text">{{ __('Backend/pages.create_page') }}</span>
                 </a>
             </div>
         </div>
@@ -20,12 +20,12 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Status</th>
-                    <th>Category</th>
-                    <th>User</th>
-                    <th>Created at</th>
-                    <th class="text-center" style="width: 30px;">Actions</th>
+                    <th>{{ __('Backend/pages.title') }}</th>
+                    <th>{{ __('Backend/pages.status') }}</th>
+                    <th>{{ __('Backend/pages.category') }}</th>
+                    <th>{{ __('Backend/pages.user') }}</th>
+                    <th>{{ __('Backend/pages.created_at') }}</th>
+                    <th class="text-center" style="width: 30px;">{{ __('Backend/pages.action') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -49,7 +49,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="text-center">No pages found</td>
+                        <td colspan="6" class="text-center">{{ __('Backend/pages.no_pages_found') }}</td>
                     </tr>
                 @endforelse
                 </tbody>

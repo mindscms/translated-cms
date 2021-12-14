@@ -23,5 +23,8 @@ return [
     'name'                  => 'الاسم',
     'comment'               => 'التعليق',
     'no_comments_found'     => 'لا توجد تعليقات',
-
+    'supervisors'           => 'المشرفين',
+    'settings'              => 'الإعدادات',
+    'profile'               => 'الملف الشخصي',
+    'logout'                => 'تسجيل خروج',
 ];

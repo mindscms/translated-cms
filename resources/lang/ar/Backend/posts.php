@@ -1,0 +1,36 @@
+<?php
+
+return [
+
+    'post'                  => 'المقال',
+    'posts'                 => 'المقالات',
+    'add_new_post'          => 'إضافة مقال جديدة',
+    'edit_post'             => 'تعديل المقال',
+    'comments'              => 'التعليقات',
+    'status'                => 'الحالة',
+    'active'                => 'نشط',
+    'inactive'              => 'غير نشط',
+    'title'                 => 'العنوان',
+    'description'           => 'الوصف',
+    'tags'                  => 'العلامات',
+    'select_all'            => 'اختر الكل',
+    'deselect_all'          => 'الغاء تحديد الكل',
+    'comment_able'          => 'إمكانية التعليق',
+    'user'                  => 'الكاتب',
+    'category'              => 'التصنيف',
+    'author'                => 'المؤلف',
+    'sliders'               => 'الصور',
+    'image_hint'            => 'يجب أن يكون عرض الصورة 800 بكسل × 500 بكسل',
+    'created_date'          => 'تاريخ الإنشاء',
+    'image'                 => 'صورة',
+    'comment'               => 'تعليق',
+    'created_at'            => 'تاريخ الإنشاء',
+    'actions'               => 'الإجراءات',
+    'no_posts_found'        => 'لم يتم العثور على أية منشورات',
+    'submit'                => 'إرسال',
+    'update_post'           => 'آخر تحديث',
+    'ascending'             => 'تصاعدي',
+    'descending'            => 'تنازلي',
+    'search'                => 'بحث',
+
+];

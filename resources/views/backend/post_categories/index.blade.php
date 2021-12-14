@@ -3,13 +3,13 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex">
-            <h6 class="m-0 font-weight-bold text-primary">Posts Categories</h6>
+            <h6 class="m-0 font-weight-bold text-primary">{{ __('Backend/post_categories.posts_categories') }}</h6>
             <div class="ml-auto">
                 <a href="{{ route('admin.post_categories.create') }}" class="btn btn-primary">
                     <span class="icon text-white-50">
                         <i class="fa fa-plus"></i>
                     </span>
-                    <span class="text">Add new category</span>
+                    <span class="text">{{ __('Backend/post_categories.add_new_category') }}</span>
                 </a>
             </div>
         </div>
@@ -20,11 +20,11 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Posts count</th>
-                    <th>Status</th>
-                    <th>Created at</th>
-                    <th class="text-center" style="width: 30px;">Actions</th>
+                    <th>{{ __('Backend/post_categories.name') }}</th>
+                    <th>{{ __('Backend/post_categories.posts_count') }}</th>
+                    <th>{{ __('Backend/post_categories.status') }}</th>
+                    <th>{{ __('Backend/post_categories.created_at') }}</th>
+                    <th class="text-center" style="width: 30px;">{{ __('Backend/post_categories.actions') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -47,7 +47,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="text-center">No categories found</td>
+                        <td colspan="5" class="text-center">{{ __('Backend/post_categories.no_categories_found') }}</td>
                     </tr>
                 @endforelse
                 </tbody>
