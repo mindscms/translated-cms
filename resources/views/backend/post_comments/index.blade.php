@@ -54,7 +54,7 @@
                 <tr>
                     <th colspan="6">
                         <div class="float-right">
-                            {!! $comments->appends(request()->input())->links() !!}
+                            {!! $comments->links() !!}
                         </div>
                     </th>
                 </tr>

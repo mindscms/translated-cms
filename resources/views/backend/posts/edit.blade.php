@@ -74,7 +74,7 @@
                     <div class="col-4">
                         <label for="category_id">{{ __('Backend/posts.category') }}</label>
                         <select name="category_id" class="form-control">
-                            <option value=""> --- </option>
+                            <option value=""> ---</option>
                             @foreach($categories as $cat)
                                 <option value="{{ $cat->id }}" {{ old('category_id', $post->category_id) == $cat->id ? 'selected' : '' }}>{{ $cat->name() }}</option>
                             @endforeach
@@ -143,12 +143,12 @@
                 tags: true,
                 minimumResultsForSearch: Infinity
             });
-            $('#select_btn_tag').click(function (){
+            $('#select_btn_tag').click(function () {
                 $('#select_all_tags > option').prop("selected", "selected");
                 $('#select_all_tags').trigger('change');
             });
 
-            $('#deselect_btn_tag').click(function (){
+            $('#deselect_btn_tag').click(function () {
                 $('#select_all_tags > option').prop("selected", "");
                 $('#select_all_tags').trigger('change');
             });
@@ -164,17 +164,23 @@
                 initialPreview: [
                     @if($post->media->count() > 0)
                         @foreach($post->media as $media)
-                            "{{ asset('assets/posts/' . $media->file_name) }}",
-                        @endforeach
+                        "{{ asset('assets/posts/' . $media->file_name) }}",
+                    @endforeach
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if($post->media->count() > 0)
+                        @if($post->media->count() > 0)
                         @foreach($post->media as $media)
-                            {caption: "{{ $media->file_name }}", size: {{ $media->file_size }}, width: "120px", url: "{{ route('admin.posts.media.destroy', [$media->id, '_token' => csrf_token()]) }}", key: "{{ $media->id }}"},
-                        @endforeach
+                    {
+                        caption: "{{ $media->file_name }}",
+                        size: {{ $media->file_size }},
+                        width: "120px",
+                        url: "{{ route('admin.posts.media.destroy', [$media->id, '_token' => csrf_token()]) }}",
+                        key: "{{ $media->id }}"
+                    },
+                    @endforeach
                     @endif
                 ],
             });

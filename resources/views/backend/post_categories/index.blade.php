@@ -30,7 +30,7 @@
                 <tbody>
                 @forelse($categories as $category)
                     <tr>
-                        <td>{{ $category->name }}</td>
+                        <td>{{ $category->name() }}</td>
                         <td><a href="{{ route('admin.posts.index', ['category_id' => $category->id]) }}">{{ $category->posts_count }}</a></td>
                         <td>{{ $category->status() }}</td>
                         <td>{{ $category->created_at->format('d-m-Y h:i a') }}</td>
@@ -55,7 +55,7 @@
                 <tr>
                     <th colspan="5">
                         <div class="float-right">
-                            {!! $categories->appends(request()->input())->links() !!}
+                            {!! $categories->links() !!}
                         </div>
                     </th>
                 </tr>

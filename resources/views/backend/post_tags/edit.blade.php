@@ -14,22 +14,31 @@
             </div>
         </div>
         <div class="card-body">
-
-            {!! Form::model($tag, ['route' => ['admin.post_tags.update', $tag->id], 'method' => 'patch']) !!}
-            <div class="row">
-                <div class="col-12">
-                    <div class="form-group">
-                        {!! Form::label('name', __('Backend/post_tags.name')) !!}
-                        {!! Form::text('name', old('name', $tag->name), ['class' => 'form-control']) !!}
-                        @error('name')<span class="text-danger">{{ $message }}</span>@enderror
+            <form action="{{ route('admin.post_tags.update', $tag->id) }}" method="post">
+                @csrf
+                @method('PATCH')
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="name">{{ __('Backend/post_tags.name') }}</label>
+                            <input type="text" name="name" value="{{ old('name') }}" class="form-control">
+                            @error('name')<span class="text-danger">{{ $message }}</span>@enderror
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="name_en">{{ __('Backend/post_tags.name_en') }}</label>
+                            <input type="text" name="name_en" value="{{ old('name_en') }}" class="form-control">
+                            @error('name_en')<span class="text-danger">{{ $message }}</span>@enderror
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group pt-4">
-                {!! Form::submit(__('Backend/post_tags.update_tag'), ['class' => 'btn btn-primary']) !!}
-            </div>
-            {!! Form::close() !!}
+                <div class="form-group pt-4">
+                    <button type="submit" class="btn btn-primary">{{ __('Backend/post_tags.update_tag') }}</button>
+                </div>
+
+            </form>
         </div>
     </div>
 

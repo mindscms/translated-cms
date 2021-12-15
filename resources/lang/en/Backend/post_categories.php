@@ -6,6 +6,7 @@ return [
     'add_new_category'      => 'Add new category',
     'id'                    => 'ID',
     'name'                  => 'Name',
+    'name_en'           => 'Name (English)',
     'posts_count'           => 'Posts count',
     'status'                => 'Status',
     'created_at'            => 'Created at',

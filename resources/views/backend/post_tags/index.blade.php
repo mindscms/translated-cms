@@ -29,7 +29,7 @@
                 <tbody>
                 @forelse($tags as $tag)
                     <tr>
-                        <td>{{ $tag->name }}</td>
+                        <td>{{ $tag->name() }}</td>
                         <td><a href="{{ route('admin.posts.index', ['tag_id' => $tag->id]) }}">{{ $tag->posts_count }}</a></td>
                         <td>{{ $tag->created_at->format('d-m-Y h:i a') }}</td>
                         <td>
@@ -53,7 +53,7 @@
                 <tr>
                     <th colspan="5">
                         <div class="float-right">
-                            {!! $tags->appends(request()->input())->links() !!}
+                            {!! $tags->links() !!}
                         </div>
                     </th>
                 </tr>

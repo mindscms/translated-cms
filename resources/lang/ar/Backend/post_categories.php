@@ -6,6 +6,7 @@ return [
     'add_new_category'      => 'إضافة قسم جديدة',
     'id'                    => 'تسلسل',
     'name'                  => 'الاسم',
+    'name_en'               => 'الاسم (English)',
     'posts_count'           => 'عدد المقالات',
     'status'                => 'الحالة',
     'created_at'            => 'تاريخ الإنشاء',
