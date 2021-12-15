@@ -62,9 +62,8 @@
                         <button type="button" class="btn btn-primary btn-xs" id="select_btn_tag">{{ __('Backend/posts.select_all') }}</button>
                         <button type="button" class="btn btn-primary btn-xs" id="deselect_btn_tag">{{ __('Backend/posts.deselect_all') }}</button>
                         <select name="tags[]" multiple class="form-control selects" id="select_all_tags">
-                            <option value=""> --- </option>
                             @foreach($tags as $tag)
-                                <option value="{{ $tag->id }}" {{ in_array($tag->id, old('tags')) ? 'selected' : '' }}>{{ $tag->name() }}</option>
+                                <option value="{{ $tag->id }}" {{ in_array($tag->id, old('tags[]', [])) ? 'selected' : '' }}>{{ $tag->name() }}</option>
                             @endforeach
                         </select>
                         @error('tags')<span class="text-danger">{{ $message }}</span>@enderror
