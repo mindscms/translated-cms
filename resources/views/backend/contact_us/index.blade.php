@@ -47,7 +47,7 @@
                 <tr>
                     <th colspan="5">
                         <div class="float-right">
-                            {!! $messages->appends(request()->input())->links() !!}
+                            {!! $messages->links() !!}
                         </div>
                     </th>
                 </tr>

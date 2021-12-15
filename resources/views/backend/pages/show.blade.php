@@ -17,11 +17,11 @@
             <table class="table table-hover">
                 <tbody>
                     <tr>
-                        <td colspan="4"><a href="{{ route('admin.pages.show', $page->id) }}">{{ $page->title }}</a></td>
+                        <td colspan="4"><a href="{{ route('admin.pages.show', $page->id) }}">{{ $page->title() }}</a></td>
                     </tr>
                     <tr>
                         <th>{{ __('Backend/pages.category') }}</th>
-                        <td>{{ $page->category->name }}</td>
+                        <td>{{ $page->category->name() }}</td>
                         <th>{{ __('Backend/pages.status') }}</th>
                         <td>{{ $page->status() }}</td>
                     </tr>

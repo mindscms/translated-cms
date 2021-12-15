@@ -20,103 +20,113 @@
             <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
-            <div class="row">
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="title">{{ __('Backend/posts.title') }}</label>
-                        <input type="text" name="title" value="{{ old('title') }}" class="form-control">
-                        @error('title')<span class="text-danger">{{ $message }}</span>@enderror
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="title">{{ __('Backend/posts.title') }}</label>
+                            <input type="text" name="title" value="{{ old('title') }}" class="form-control">
+                            @error('title')<span class="text-danger">{{ $message }}</span>@enderror
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="title_en">{{ __('Backend/posts.title_en') }}</label>
+                            <input type="text" name="title_en" value="{{ old('title_en') }}" class="form-control">
+                            @error('title_en')<span class="text-danger">{{ $message }}</span>@enderror
+                        </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="title_en">{{ __('Backend/posts.title_en') }}</label>
-                        <input type="text" name="title_en" value="{{ old('title_en') }}" class="form-control">
-                        @error('title_en')<span class="text-danger">{{ $message }}</span>@enderror
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="description">{{ __('Backend/posts.description') }}</label>
-                        <textarea name="description" class="form-control summernote">{!! old('description') !!}</textarea>
-                        @error('description')<span class="text-danger">{{ $message }}</span>@enderror
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="description">{{ __('Backend/posts.description') }}</label>
+                            <textarea name="description"
+                                      class="form-control summernote">{!! old('description') !!}</textarea>
+                            @error('description')<span class="text-danger">{{ $message }}</span>@enderror
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="description_en">{{ __('Backend/posts.description_en') }}</label>
+                            <textarea name="description_en"
+                                      class="form-control summernote">{!! old('description_en') !!}</textarea>
+                            @error('description_en')<span class="text-danger">{{ $message }}</span>@enderror
+                        </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="description_en">{{ __('Backend/posts.description_en') }}</label>
-                        <textarea name="description_en" class="form-control summernote">{!! old('description_en') !!}</textarea>
-                        @error('description_en')<span class="text-danger">{{ $message }}</span>@enderror
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="tags">{{ __('Backend/posts.tags') }}</label>
+                            <button type="button" class="btn btn-primary btn-xs"
+                                    id="select_btn_tag">{{ __('Backend/posts.select_all') }}</button>
+                            <button type="button" class="btn btn-primary btn-xs"
+                                    id="deselect_btn_tag">{{ __('Backend/posts.deselect_all') }}</button>
+                            <select name="tags[]" multiple class="form-control selects" id="select_all_tags">
+                                @foreach($tags as $tag)
+                                    <option value="{{ $tag->id }}" {{ in_array($tag->id, old('tags[]', [])) ? 'selected' : '' }}>{{ $tag->name() }}</option>
+                                @endforeach
+                            </select>
+                            @error('tags')<span class="text-danger">{{ $message }}</span>@enderror
+                        </div>
                     </div>
                 </div>
-            </div>
 
-
-            <div class="row">
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for="tags">{{ __('Backend/posts.tags') }}</label>
-                        <button type="button" class="btn btn-primary btn-xs" id="select_btn_tag">{{ __('Backend/posts.select_all') }}</button>
-                        <button type="button" class="btn btn-primary btn-xs" id="deselect_btn_tag">{{ __('Backend/posts.deselect_all') }}</button>
-                        <select name="tags[]" multiple class="form-control selects" id="select_all_tags">
-                            @foreach($tags as $tag)
-                                <option value="{{ $tag->id }}" {{ in_array($tag->id, old('tags[]', [])) ? 'selected' : '' }}>{{ $tag->name() }}</option>
+                <div class="row">
+                    <div class="col-4">
+                        <label for="category_id">{{ __('Backend/posts.category') }}</label>
+                        <select name="category_id" class="form-control">
+                            <option value=""> ---</option>
+                            @foreach($categories as $cat)
+                                <option
+                                    value="{{ $cat->id }}" {{ old('category_id') == $cat->id ? 'selected' : '' }}>{{ $cat->name() }}</option>
                             @endforeach
                         </select>
-                        @error('tags')<span class="text-danger">{{ $message }}</span>@enderror
+                        @error('category_id')<span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-4">
+                        <label for="comment_able">{{ __('Backend/posts.comment_able') }}</label>
+                        <select name="comment_able" class="form-control">
+                            <option
+                                value="1" {{ old('comment_able') == '1' ? 'selected' : '' }}>{{ __('Backend/posts.yes') }}</option>
+                            <option
+                                value="0" {{ old('comment_able') == '0' ? 'selected' : '' }}>{{ __('Backend/posts.no') }}</option>
+                        </select>
+                        @error('comment_able')<span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-4">
+                        <label for="status">{{ __('Backend/posts.status') }}</label>
+                        <select name="status" class="form-control">
+                            <option
+                                value="1" {{ old('status') == '1' ? 'selected' : '' }}>{{ __('Backend/posts.active') }}</option>
+                            <option
+                                value="0" {{ old('status') == '0' ? 'selected' : '' }}>{{ __('Backend/posts.inactive') }}</option>
+                        </select>
+                        @error('status')<span class="text-danger">{{ $message }}</span>@enderror
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-4">
-                    <label for="category_id">{{ __('Backend/posts.category') }}</label>
-                    <select name="category_id" class="form-control">
-                        <option value=""> --- </option>
-                        @foreach($categories as $cat)
-                            <option value="{{ $cat->id }}" {{ old('category_id') == $cat->id ? 'selected' : '' }}>{{ $cat->name() }}</option>
-                        @endforeach
-                    </select>
-                    @error('category_id')<span class="text-danger">{{ $message }}</span>@enderror
-                </div>
-                <div class="col-4">
-                    <label for="comment_able">{{ __('Backend/posts.comment_able') }}</label>
-                    <select name="comment_able" class="form-control">
-                        <option value="1" {{ old('comment_able') == '1' ? 'selected' : '' }}>{{ __('Backend/posts.yes') }}</option>
-                        <option value="0" {{ old('comment_able') == '0' ? 'selected' : '' }}>{{ __('Backend/posts.no') }}</option>
-                    </select>
-                    @error('comment_able')<span class="text-danger">{{ $message }}</span>@enderror
-                </div>
-                <div class="col-4">
-                    <label for="status">{{ __('Backend/posts.status') }}</label>
-                    <select name="status" class="form-control">
-                        <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>{{ __('Backend/posts.active') }}</option>
-                        <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>{{ __('Backend/posts.inactive') }}</option>
-                    </select>
-                    @error('status')<span class="text-danger">{{ $message }}</span>@enderror
-                </div>
-            </div>
-
-            <div class="row pt-4">
-                <div class="col-12">
-                    <label for="images">{{ __('Backend/posts.sliders') }}</label>
-                    <br>
-                    <div class="file-loading">
-                        <input type="file" name="images[]" id="post-images" class="file-input-overview" multiple="multiple">
-                        <span class="form-text text-muted">{{ __('Backend/posts.image_hint') }}</span>
-                        @error('images')<span class="text-danger">{{ $message }}</span>@enderror
+                <div class="row pt-4">
+                    <div class="col-12">
+                        <label for="images">{{ __('Backend/posts.sliders') }}</label>
+                        <br>
+                        <div class="file-loading">
+                            <input type="file" name="images[]" id="post-images" class="file-input-overview"
+                                   multiple="multiple">
+                            <span class="form-text text-muted">{{ __('Backend/posts.image_hint') }}</span>
+                            @error('images')<span class="text-danger">{{ $message }}</span>@enderror
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group pt-4">
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Backend/posts.submit') }}
-                </button>
-            </div>
+                <div class="form-group pt-4">
+                    <button type="submit" class="btn btn-primary">
+                        {{ __('Backend/posts.submit') }}
+                    </button>
+                </div>
             </form>
         </div>
     </div>
@@ -144,12 +154,12 @@
                 tags: true,
                 minimumResultsForSearch: Infinity
             });
-            $('#select_btn_tag').click(function (){
+            $('#select_btn_tag').click(function () {
                 $('#select_all_tags > option').prop("selected", "selected");
                 $('#select_all_tags').trigger('change');
             });
 
-            $('#deselect_btn_tag').click(function (){
+            $('#deselect_btn_tag').click(function () {
                 $('#select_all_tags > option').prop("selected", "");
                 $('#select_all_tags').trigger('change');
             });

@@ -1,6 +1,5 @@
 <div class="card-body">
     <form action="{{ route('admin.posts.index') }}" method="get">
-        @csrf
         <div class="row">
             <div class="col-2">
                 <div class="form-group">

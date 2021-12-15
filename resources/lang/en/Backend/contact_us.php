@@ -6,6 +6,8 @@ return [
     'from'              => 'From',
     'title'             => 'title',
     'status'            => 'Status',
+    'active'            => 'Active',
+    'inactive'          => 'Inactive',
     'created_at'        => 'Created at',
     'actions'           => 'Actions',
     'no_messages_found' => 'No messages found',

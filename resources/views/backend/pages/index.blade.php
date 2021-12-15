@@ -31,9 +31,9 @@
                 <tbody>
                 @forelse($pages as $page)
                     <tr>
-                        <td><a href="{{ route('admin.pages.show', $page->id) }}">{{ $page->title }}</a></td>
+                        <td><a href="{{ route('admin.pages.show', $page->id) }}">{{ $page->title() }}</a></td>
                         <td>{{ $page->status() }}</td>
-                        <td><a href="{{ route('admin.pages.index', ['category_id' => $page->category_id]) }}">{{ $page->category->name }}</a></td>
+                        <td><a href="{{ route('admin.pages.index', ['category_id' => $page->category_id]) }}">{{ $page->category->name() }}</a></td>
                         <td>{{ $page->user->name }}</td>
                         <td>{{ $page->created_at->format('d-m-Y h:i a') }}</td>
                         <td>
@@ -57,7 +57,7 @@
                 <tr>
                     <th colspan="6">
                         <div class="float-right">
-                            {!! $pages->appends(request()->input())->links() !!}
+                            {!! $pages->links() !!}
                         </div>
                     </th>
                 </tr>

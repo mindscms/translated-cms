@@ -6,6 +6,8 @@ return [
     'from'              => 'من',
     'title'             => 'العنوان',
     'status'            => 'الحالة',
+    'active'            => 'نشط',
+    'inactive'          => 'غير نشط',
     'created_at'        => 'تاريخ الإنشاء',
     'actions'           => 'الإجراءات',
     'no_messages_found' => 'لا توجد رسائل',

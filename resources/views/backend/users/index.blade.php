@@ -69,7 +69,7 @@
                 <tr>
                     <th colspan="6">
                         <div class="float-right">
-                            {!! $users->appends(request()->input())->links() !!}
+                            {!! $users->links() !!}
                         </div>
                     </th>
                 </tr>
