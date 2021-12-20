@@ -2,6 +2,7 @@
 
 return [
 
-    'settings' => 'Settings',
+    'settings'  => 'Settings',
+    'submit'    => 'Submit',
 
 ];

@@ -17,6 +17,7 @@
 
             <form action="{{ route('admin.users.update', $user->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('patch')
                 <div class="row">
                     <div class="col-3">
                         <div class="form-group">

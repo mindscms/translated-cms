@@ -2,6 +2,7 @@
 
 return [
 
-    'settings' => 'الإعدادات',
+    'settings'  => 'الإعدادات',
+    'submit'    => 'حفظ',
 
 ];
