@@ -71,6 +71,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::post('/supervisors/removeImage',         [Backend\SupervisorsController::class, 'removeImage'])->name('supervisors.remove_image');
         Route::resource('supervisors',                  Backend\SupervisorsController::class);
         Route::resource('settings',                     Backend\SettingsController::class)->only(['index', 'update']);
+        Route::resource('roles',                        Backend\RolesController::class);
+        Route::resource('permissions',                  Backend\PermissionsController::class);
+
     });
 });
 
