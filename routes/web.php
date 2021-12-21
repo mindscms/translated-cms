@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'web'], function () {
     Route::get('/', [Frontend\IndexController::class, 'index'])->name('frontend.index');
+    Route::get('js/lang_ar.js', [ServiceController::class, 'vue_translate_ar'])->name('vue_translate_ar');
+    Route::get('js/lang_en.js', [ServiceController::class, 'vue_translate_en'])->name('vue_translate_en');
+
     // Authentication Routes..
     Route::get('/login', [Frontend\Auth\LoginController::class, 'showLoginForm'])->name('frontend.show_login_form');
     Route::post('login', [Frontend\Auth\LoginController::class, 'login'])->name('frontend.login');

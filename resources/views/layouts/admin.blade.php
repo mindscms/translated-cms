@@ -56,6 +56,7 @@
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/themes/fas/theme.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/summernote/summernote-bs4.min.js') }}"></script>
+    <script src="{{ url('js/lang_'.config('app.locale').'.js') }}"></script>
     <script src="{{ asset('backend/js/custom.js') }}"></script>
     @yield('script')
     @livewireScripts
