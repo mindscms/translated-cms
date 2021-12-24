@@ -31,6 +31,16 @@
 
             <div class="col-md-8 col-sm-8 col-5 col-lg-2">
                 <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
+                    @if(config('app.locale') == 'ar')
+                        <li class="lang_link">
+                            <a href="{{ route('change_locale', 'en') }}">English</a>
+                        </li>
+                    @else
+                        <li class="lang_link">
+                            <a href="{{ route('change_locale', 'ar') }}">عربي</a>
+                        </li>
+                    @endif
+
                     <li class="shop_search"><a class="search__active" href="#"></a></li>
 
                     <user-notification></user-notification>
