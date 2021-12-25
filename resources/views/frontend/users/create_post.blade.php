@@ -14,11 +14,21 @@
                 <input type="text" name="title" value="{{ old('title') }}" class="form-control">
                 @error('title')<span class="text-danger">{{ $message }}</span>@enderror
             </div>
+            <div class="form-group">
+                <label for="title_en">{{ __('Frontend/general.title_en') }}</label>
+                <input type="text" name="title_en" value="{{ old('title_en') }}" class="form-control">
+                @error('title_en')<span class="text-danger">{{ $message }}</span>@enderror
+            </div>
 
             <div class="form-group">
                 <label for="description">{{ __('Frontend/general.description') }}</label>
                 <textarea name="description" class="form-control summernote">{{ old('description') }}</textarea>
                 @error('description')<span class="text-danger">{{ $message }}</span>@enderror
+            </div>
+            <div class="form-group">
+                <label for="description_en">{{ __('Frontend/general.description_en') }}</label>
+                <textarea name="description_en" class="form-control summernote">{{ old('description_en') }}</textarea>
+                @error('description_en')<span class="text-danger">{{ $message }}</span>@enderror
             </div>
 
             <div class="form-group">
@@ -27,7 +37,7 @@
                 <button type="button" class="btn btn-primary btn-xs" id="deselect_btn_tag">{{ __('Frontend/general.deselect_all') }}</button>
                 <select name="tags[]" id="select_all_tags" class="form-control selects" multiple="multiple">
                     @foreach($tags->toArray() as $tag)
-                        <option value="{{ $tag->id }}">{{ $tag->name() }}</option>
+                        <option value="{{ $tag->id }}" {{ in_array($tag->id, old('tags[]', [])) ? 'selected' : '' }}>{{ $tag->name() }}</option>
                     @endforeach
                 </select>
                 @error('tags')<span class="text-danger">{{ $message }}</span>@enderror
@@ -38,7 +48,7 @@
                     <label for="category_id">{{ __('Frontend/general.category_id') }}</label>
                     <select name="category_id" class="form-control">
                         @foreach($categories->toArray() as $category)
-                            <option value="{{ $category->id }}">{{ $category->name() }}</option>
+                            <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name() }}</option>
                         @endforeach
                     </select>
                     @error('category_id')<span class="text-danger">{{ $message }}</span>@enderror

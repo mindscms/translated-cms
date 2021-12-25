@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="col-lg-9 col-12">
-        <h3>{{ __('Frontend/general.edit_comment_on', ['title' => $comment->post->title]) }}</h3>
+        <h3>{{ __('Frontend/general.edit_comment_on', ['title' => $comment->post->title()]) }}</h3>
         <form action="{{ route('users.comment.update', $comment->id) }}" method="post">
             @csrf
             @method('PUT')

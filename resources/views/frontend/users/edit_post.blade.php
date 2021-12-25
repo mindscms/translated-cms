@@ -6,7 +6,7 @@
 @section('content')
 
     <div class="col-lg-9 col-12">
-        <h3>{{ __('Frontend/general.edit_post', ['title' => $post->title]) }}</h3>
+        <h3>{{ __('Frontend/general.edit_post', ['title' => $post->title()]) }}</h3>
         <form action="{{ route('users.post.update', $post->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -15,11 +15,21 @@
                 <input type="text" name="title" value="{{ old('title', $post->title) }}" class="form-control">
                 @error('title')<span class="text-danger">{{ $message }}</span>@enderror
             </div>
+            <div class="form-group">
+                <label for="title_en">{{ __('Frontend/general.title_en') }}</label>
+                <input type="text" name="title_en" value="{{ old('title_en', $post->title_en) }}" class="form-control">
+                @error('title_en')<span class="text-danger">{{ $message }}</span>@enderror
+            </div>
 
             <div class="form-group">
                 <label for="description">{{ __('Frontend/general.description') }}</label>
                 <textarea name="description" class="form-control summernote">{{ old('description', $post->description) }}</textarea>
                 @error('description')<span class="text-danger">{{ $message }}</span>@enderror
+            </div>
+            <div class="form-group">
+                <label for="description_en">{{ __('Frontend/general.description_en') }}</label>
+                <textarea name="description_en" class="form-control summernote">{{ old('description_en', $post->description_en) }}</textarea>
+                @error('description_en')<span class="text-danger">{{ $message }}</span>@enderror
             </div>
 
             <div class="form-group">

@@ -16,7 +16,7 @@
                 @forelse($comments as $comment)
                     <tr>
                         <td>{{ $comment->name }}</td>
-                        <td>{{ $comment->post->title }}</td>
+                        <td>{{ $comment->post->title() }}</td>
                         <td>{{ $comment->status }}</td>
                         <td>
                             <a href="{{ route('users.comment.edit', $comment->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>

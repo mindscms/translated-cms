@@ -33,7 +33,7 @@
 
                 <div class="post_wrapper">
                     <div class="post_header">
-                        <h2>{{ $post->title }}</h2>
+                        <h2>{{ $post->title() }}</h2>
                         <div class="blog-date-categori">
                             <ul>
                                 <li>{{ $post->created_at->format('M d, Y') }}</li>
@@ -42,13 +42,13 @@
                         </div>
                     </div>
                     <div class="post_content">
-                        <p>{!! $post->description !!}</p>
+                        <p>{!! $post->description() !!}</p>
 
                         @if ($post->tags->count() > 0)
                             <div class="post__meta">
                                 <span>{{ __('Frontend/general.tags') }}: </span>
                                 @foreach($post->tags as $tag)
-                                    <a href="{{ route('frontend.tag.posts', $tag->slug) }}" class="bg-info p-1"><span class="text-white">{{ $tag->name }}</span></a>
+                                    <a href="{{ route('frontend.tag.posts', $tag->url_slug()) }}" class="bg-info p-1"><span class="text-white">{{ $tag->name() }}</span></a>
                                 @endforeach
                             </div>
                         @endif
@@ -57,7 +57,7 @@
                     <ul class="blog_meta">
                         <li><a href="#">{{ $post->approved_comments->count() }} {{ __('Frontend/general.comment_s') }}</a></li>
                         <li> / </li>
-                        <li>{{ __('Frontend/general.category_id') }}:<span>{{ $post->category->name }}</span></li>
+                        <li>{{ __('Frontend/general.category_id') }}:<span>{{ $post->category->name() }}</span></li>
                     </ul>
                 </div>
             </article>
@@ -88,7 +88,7 @@
 
             <div class="comment_respond">
                 <h3 class="reply_title">{{ __('Frontend/general.leave_reply') }} <small></small></h3>
-                <form action="{{ route('frontend.posts.add_comment', $post->slug) }}" method="post" class="comment__form">
+                <form action="{{ route('frontend.posts.add_comment', $post->url_slug()) }}" method="post" class="comment__form">
                     @csrf
                     <p>{{ __('Frontend/general.email_not_published') }}</p>
                     <div class="input__box">
